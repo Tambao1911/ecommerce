@@ -1,0 +1,36 @@
+.container {
+    margin: 10px auto 0;
+    border: 1px solid gray;
+    width: 350px;
+    padding: 20px;
+    .user {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        
+        .use_img {
+            img {
+                border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            }
+        }
+        
+        .user_dec {
+            display: flex;
+            font-size: 16px;
+            flex-direction: column;
+            flex: 1;
+            line-height: 50px;
+            .use_name {
+                
+                margin: 0 50px 0 0;
+            }
+            .user_email {
+                
+                margin: 0 10px 0 0;
+            }
+        }
+    }
+}

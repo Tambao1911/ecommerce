@@ -34,6 +34,7 @@ class AddTodo extends React.Component {
             title: ''
         })
     }
+
     render() {
         let { title } = this.state
         return (
