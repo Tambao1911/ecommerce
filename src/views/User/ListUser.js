@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import classNames from "classnames/bind";
@@ -11,10 +11,12 @@ function ListUser() {
     const [state, setState] = useState([])
     const hitory = useNavigate()
 
-    axios.get("https://reqres.in/api/users?page=1")
-        .then((res) => {
-            setState(res.data.data);
-        });
+    useEffect(() => {
+        axios.get("https://reqres.in/api/users?page=1")
+            .then((res) => {
+                setState(res.data.data);
+            });
+    }, [])
 
 
     const handleUser = (user) => {

@@ -1,13 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './views/App';
-import reportWebVitals from './reportWebVitals';
-import './styles/global.scss'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import rootReducers from "./store/reducers/rootReducer";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import App from "./views/App";
+import reportWebVitals from "./reportWebVitals";
+import "./styles/global.scss";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+const reduxStore = createStore(rootReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={reduxStore}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

@@ -10,7 +10,7 @@ import './App.scss';
 import ListTodo from './Todos/ListTodo';
 import Nav from './Nav/Nav';
 import Home from './Exampla/Home';
-import About from './Exampla/About';
+import MyComponent from './Exampla/MyComponent';
 import ListUser from './User/ListUser'
 import DetailUser from './User/DetailUser';
 
@@ -33,7 +33,7 @@ function App() {
                         />
                         <Route
                             path='/about'
-                            element={<About />}
+                            element={<MyComponent />}
                         />
                         <Route
                             path='/user'

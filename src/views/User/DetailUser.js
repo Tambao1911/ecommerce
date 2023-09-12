@@ -3,7 +3,7 @@ import axios from 'axios';
 import classNames from 'classnames/bind';
 import styles from './DetailUser.module.scss'
 
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const cx = classNames.bind(styles)
 
@@ -12,6 +12,7 @@ function DetailUser() {
     const [state, setState] = useState({})
     let isEmptyObj = Object.keys(state).length === 0
     const { id } = useParams();
+    const hitory = useNavigate()
     useEffect(() => {
         if (id) {
             axios.get(`https://reqres.in/api/users/${id}`)
@@ -19,7 +20,11 @@ function DetailUser() {
                     setState(res.data.data)
                 ))
         }
-    }, [id])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    const handleBack = () => {
+        hitory('/user')
+    }
     return (
         <>
             <div>Personal information</div>
@@ -27,10 +32,11 @@ function DetailUser() {
                 <div className={cx('user')}>
                     <div className={cx('use_img')}><img src={state.avatar} alt={state.last_name} /></div>
                     <div className={cx('user_dec')}>
-                        <p className={cx('use_name')}>FullName: {state.first_name} {state.last_name}</p>
-                        <p className={cx('user_email')}>Email: {state.email}</p>
+                        <p className={cx('use_name')}>User Name: {state.first_name} {state.last_name}</p>
+                        <p className={cx('user_email')}>User Email: {state.email}</p>
                     </div>
                 </div>
+                <button onClick={() => handleBack()}>Back</button>
             </div>}
         </>
     );
